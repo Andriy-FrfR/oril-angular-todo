@@ -1,0 +1,73 @@
+<form [formGroup]="signUpForm">
+  <fieldset class="form-group">
+    <label for="fullName">Full Name *</label>
+    <br />
+    <input
+      id="fullName"
+      type="text"
+      class="form-control"
+      formControlName="fullName"
+    />
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="username">Username *</label>
+    <br />
+    <input
+      id="username"
+      type="text"
+      class="form-control"
+      formControlName="username"
+    />
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="email">Email *</label>
+    <br />
+    <input
+      id="email"
+      type="email"
+      class="form-control"
+      formControlName="email"
+    />
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="phone">Phone number *</label>
+    <br />
+    <input id="phone" type="tel" class="form-control" formControlName="phone" />
+  </fieldset>
+
+  <fieldset class="form-group address">
+    <label for="address">Address line *</label>
+    <br />
+    <input
+      id="address"
+      type="text"
+      class="form-control"
+      formControlName="address"
+    />
+  </fieldset>
+  <fieldset class="form-group suite">
+    <label for="suite">Suite</label>
+    <br />
+    <input
+      id="suite"
+      type="text"
+      class="form-control"
+      formControlName="suite"
+    />
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="city">City *</label>
+    <br />
+    <input id="city" type="text" class="form-control" formControlName="city" />
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="zip">ZIP Code *</label>
+    <br />
+    <input id="zip" type="text" class="form-control" formControlName="ZIP" />
+  </fieldset>
+
+  <button class="btn-large btn-green" type="submit">
+    Create Account <img src="../../../../assets/img/Vector.png" alt="" />
+  </button>
+</form>

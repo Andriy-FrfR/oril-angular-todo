@@ -1,0 +1,19 @@
+form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  &.address {
+    width: 500px;
+  }
+
+  &.suite {
+    width: 100px;
+  }
+}
+
+button {
+  margin-top: 50px;
+}
