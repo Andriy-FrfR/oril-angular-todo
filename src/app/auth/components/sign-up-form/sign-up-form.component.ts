@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { User } from './../../interfaces/user.interface';
+import { AuthService } from './../../services/auth.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
   styleUrls: ['./sign-up-form.component.scss'],
 })
-export class SignUpFormComponent implements OnInit {
+export class SignUpFormComponent implements OnDestroy {
   signUpForm: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),
     username: new FormControl(null, [Validators.required]),
@@ -24,9 +28,37 @@ export class SignUpFormComponent implements OnInit {
     ]),
   });
 
-  constructor() {}
+  sub!: Subscription;
 
-  ngOnInit(): void {}
+  constructor(private authServ: AuthService, private router: Router) {}
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
+
+  onSubmit(): void {
+    if (this.signUpForm.invalid) {
+      this.signUpForm.markAllAsTouched();
+      return;
+    }
+
+    const userData: User = {
+      name: this.name?.value,
+      username: this.username?.value,
+      email: this.email?.value,
+      phone: this.phone?.value,
+      address: {
+        street: this.address?.value,
+        suite: this.suite?.value,
+        city: this.city?.value,
+        zipcode: this.zipcode?.value,
+      },
+    };
+
+    this.sub = this.authServ
+      .signUp(userData)
+      .subscribe(() => this.router.navigate(['/todo']));
+  }
 
   get name() {
     return this.signUpForm.get('name');
