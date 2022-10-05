@@ -1,13 +1,19 @@
 <form [formGroup]="signUpForm">
   <fieldset class="form-group">
-    <label for="fullName">Full Name *</label>
+    <label for="name">Full Name *</label>
     <br />
     <input
-      id="fullName"
+      id="name"
       type="text"
       class="form-control"
-      formControlName="fullName"
+      [class.invalid]="name?.invalid && name?.touched"
+      formControlName="name"
     />
+    <div class="errors-list" *ngIf="name?.invalid && name?.touched">
+      <div class="errors-item" *ngIf="name?.errors?.required">
+        This field is required
+      </div>
+    </div>
   </fieldset>
   <fieldset class="form-group">
     <label for="username">Username *</label>
@@ -16,8 +22,14 @@
       id="username"
       type="text"
       class="form-control"
+      [class.invalid]="username?.invalid && username?.touched"
       formControlName="username"
     />
+    <div class="errors-list" *ngIf="username?.invalid && username?.touched">
+      <div class="errors-item" *ngIf="username?.errors?.required">
+        This field is required
+      </div>
+    </div>
   </fieldset>
   <fieldset class="form-group">
     <label for="email">Email *</label>
@@ -26,13 +38,36 @@
       id="email"
       type="email"
       class="form-control"
+      [class.invalid]="email?.invalid && email?.touched"
       formControlName="email"
     />
+    <div class="errors-list" *ngIf="email?.invalid && email?.touched">
+      <div class="errors-item" *ngIf="email?.errors?.required">
+        This field is required
+      </div>
+      <div class="errors-item" *ngIf="email?.errors?.email">
+        Please enter a valid email address
+      </div>
+    </div>
   </fieldset>
   <fieldset class="form-group">
     <label for="phone">Phone number *</label>
     <br />
-    <input id="phone" type="tel" class="form-control" formControlName="phone" />
+    <input
+      id="phone"
+      type="tel"
+      class="form-control"
+      [class.invalid]="phone?.invalid && phone?.touched"
+      formControlName="phone"
+    />
+    <div class="errors-list" *ngIf="phone?.invalid && phone?.touched">
+      <div class="errors-item" *ngIf="phone?.errors?.required">
+        This field is required
+      </div>
+      <div class="errors-item" *ngIf="phone?.errors?.pattern">
+        Please enter a valid phone number
+      </div>
+    </div>
   </fieldset>
 
   <fieldset class="form-group address">
@@ -42,8 +77,14 @@
       id="address"
       type="text"
       class="form-control"
+      [class.invalid]="address?.invalid && address?.touched"
       formControlName="address"
     />
+    <div class="errors-list" *ngIf="address?.invalid && address?.touched">
+      <div class="errors-item" *ngIf="address?.errors?.required">
+        This field is required
+      </div>
+    </div>
   </fieldset>
   <fieldset class="form-group suite">
     <label for="suite">Suite</label>
@@ -59,12 +100,37 @@
   <fieldset class="form-group">
     <label for="city">City *</label>
     <br />
-    <input id="city" type="text" class="form-control" formControlName="city" />
+    <input
+      id="city"
+      type="text"
+      class="form-control"
+      formControlName="city"
+      [class.invalid]="city?.invalid && city?.touched"
+    />
+    <div class="errors-list" *ngIf="city?.invalid && city?.touched">
+      <div class="errors-item" *ngIf="city?.errors?.required">
+        This field is required
+      </div>
+    </div>
   </fieldset>
   <fieldset class="form-group">
-    <label for="zip">ZIP Code *</label>
+    <label for="zipcode">ZIP Code *</label>
     <br />
-    <input id="zip" type="text" class="form-control" formControlName="ZIP" />
+    <input
+      id="zipcode"
+      type="text"
+      class="form-control"
+      [class.invalid]="zipcode?.invalid && zipcode?.touched"
+      formControlName="zipcode"
+    />
+    <div class="errors-list" *ngIf="zipcode?.invalid && zipcode?.touched">
+      <div class="errors-item" *ngIf="zipcode?.errors?.required">
+        This field is required
+      </div>
+      <div class="errors-item" *ngIf="zipcode?.errors?.pattern">
+        This field should be 5 numbers length
+      </div>
+    </div>
   </fieldset>
 
   <button class="btn-large btn-green" type="submit">

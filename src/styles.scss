@@ -13,6 +13,7 @@
 // Forms
 
 .form-group {
+  position: relative;
   width: 300px;
   border: none;
   margin-top: 40px;
@@ -33,6 +34,31 @@
   border-radius: 6px;
   padding: 8px 14px;
   background: #ffffff;
+  outline: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #262626;
+
+  &.invalid {
+    border: 1px solid #e39735;
+    background: #fdf7eb;
+  }
+}
+
+.errors-list {
+  position: absolute;
+  top: 95%;
+}
+
+.errors-item {
+  margin-top: 7px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #e59d40;
 }
 
 // Buttons
@@ -58,10 +84,14 @@ button {
 
 .btn-green {
   background: linear-gradient(270deg, #1ea39b 0%, #38ef7d 100%);
-  filter: drop-shadow(0px 4px 14px rgba(44, 203, 139, 0.3));
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 22px;
   color: #fff;
+  transition: all 0.2s;
+
+  &:hover {
+    filter: drop-shadow(0px 4px 14px rgba(44, 203, 139, 0.3));
+  }
 }
