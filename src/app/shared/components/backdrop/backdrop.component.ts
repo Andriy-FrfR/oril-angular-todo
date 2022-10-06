@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./backdrop.component.scss'],
 })
 export class BackdropComponent implements OnInit {
-  showBackdrop = true;
+  showBackdrop = false;
 
   constructor(private backdropServ: BackdropService) {}
 

@@ -1,0 +1,12 @@
+<app-modal [title]="'Removing a ToDo'">
+  <div class="warning">
+    Are you sure you want to remove this ToDo? It would be impossible to restore
+    it afterwards
+  </div>
+  <div class="todo-title">
+    {{ todo?.title }}
+  </div>
+  <button class="btn-large btn-white" (click)="onRemoveTodoBtnClick()">
+    Yes, Remove ToDo
+  </button>
+</app-modal>

@@ -1,4 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { BackdropEvents } from './../../../shared/enums/backdrop-events.enum';
+import { BackdropService } from './../../../shared/services/backdrop.service';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../interfaces/todo.interface';
 import { TodoService } from '../../services/todo.service';
@@ -10,12 +11,27 @@ import { TodoService } from '../../services/todo.service';
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
+  activeTodo!: Todo;
+  showAddTodoModal = false;
+  showRemoveTodoModal = false;
+  showUpdateTodoModal = false;
 
-  constructor(private todoServ: TodoService) {}
+  constructor(
+    private todoServ: TodoService,
+    private backdropServ: BackdropService
+  ) {}
 
   ngOnInit(): void {
     this.todoServ.getAll().subscribe((todos: Todo[]) => {
       this.todos = todos;
+    });
+
+    this.backdropServ.backdrop$.subscribe((event: BackdropEvents) => {
+      if (event === BackdropEvents.Hide) {
+        this.showAddTodoModal = false;
+        this.showRemoveTodoModal = false;
+        this.showUpdateTodoModal = false;
+      }
     });
   }
 
@@ -23,12 +39,44 @@ export class TodoListComponent implements OnInit {
     event.preventDefault();
 
     this.todoServ.update({ ...todo, completed: !todo.completed }).subscribe({
-      next: () => {
-        todo.completed = !todo.completed;
+      next: (updatedTodo) => {
+        Object.assign(todo, updatedTodo);
       },
       error: () => {
         todo.completed = !todo.completed;
       },
     });
+  }
+
+  onAddTodoBtnClick(): void {
+    this.backdropServ.showBackdrop();
+    this.showAddTodoModal = true;
+  }
+
+  onRemoveTodoBtnClick(todo: Todo): void {
+    this.backdropServ.showBackdrop();
+    this.showRemoveTodoModal = true;
+    this.activeTodo = todo;
+  }
+
+  onUpdateTodoBtnClick(todo: Todo): void {
+    this.backdropServ.showBackdrop();
+    this.showUpdateTodoModal = true;
+    this.activeTodo = todo;
+  }
+
+  onTodoCreated(todo: Todo): void {
+    this.todos.unshift(todo);
+    this.backdropServ.hideBackdrop();
+  }
+
+  onTodoRemoved(todo: Todo): void {
+    this.todos = this.todos.filter((t) => t !== todo);
+    this.backdropServ.hideBackdrop();
+  }
+
+  onTodoUpdated(todo: Todo): void {
+    this.activeTodo.title = todo.title;
+    this.backdropServ.hideBackdrop();
   }
 }

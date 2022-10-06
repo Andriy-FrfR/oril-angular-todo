@@ -12,7 +12,7 @@ export class TodoService {
     return this.http.get<Todo[]>(`${environment.baseApiUrl}/todos?_limit=4`);
   }
 
-  post(todo: Todo): Observable<Todo> {
+  create(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>(`${environment.baseApiUrl}/todos`, todo);
   }
 

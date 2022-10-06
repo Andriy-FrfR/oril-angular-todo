@@ -1,0 +1,17 @@
+<app-modal [title]="'Add ToDo'">
+  <textarea
+    class="form-control"
+    id="title"
+    placeholder="Start typing ..."
+    [(ngModel)]="title"
+  ></textarea>
+  <button
+    class="btn-large"
+    [class.btn-green]="!!title"
+    [disabled]="!title"
+    (click)="onSaveTodoBtnClick()"
+  >
+    Save ToDo
+    <img src="../../../../assets/img/arrow-right.png" alt="Save ToDo button" />
+  </button>
+</app-modal>

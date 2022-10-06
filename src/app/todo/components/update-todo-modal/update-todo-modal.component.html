@@ -1,0 +1,20 @@
+<app-modal [title]="'Edit a ToDo'">
+  <textarea
+    class="form-control"
+    id="title"
+    placeholder="Start typing ..."
+    [(ngModel)]="title"
+  ></textarea>
+  <button
+    class="btn-large"
+    [class.btn-green]="!!title"
+    [disabled]="!title"
+    (click)="onUpdateTodoBtnClick()"
+  >
+    Save ToDo
+    <img
+      src="../../../../assets/img/arrow-right.png"
+      alt="Update ToDo button"
+    />
+  </button>
+</app-modal>
