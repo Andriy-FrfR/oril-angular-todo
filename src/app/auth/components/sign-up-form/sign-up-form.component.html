@@ -65,7 +65,7 @@
         This field is required
       </div>
       <div class="errors-item" *ngIf="phone?.errors?.pattern">
-        Please enter a valid phone number
+        Phone number has to match this pattern: XXX-XXX-XXXX
       </div>
     </div>
   </fieldset>
@@ -133,7 +133,12 @@
     </div>
   </fieldset>
 
-  <button class="btn-large btn-green" type="submit">
+  <button
+    class="btn-large"
+    [class.btn-green]="signUpForm.valid"
+    [class.disabled]="signUpForm.invalid"
+    type="submit"
+  >
     Create Account <img src="../../../../assets/img/Vector.png" alt="" />
   </button>
 </form>

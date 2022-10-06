@@ -5,10 +5,11 @@
     placeholder="Start typing ..."
     [(ngModel)]="title"
   ></textarea>
+  <div class="errors-item" *ngIf="showError">This field is required</div>
   <button
     class="btn-large"
     [class.btn-green]="!!title"
-    [disabled]="!title"
+    [class.disabled]="!title"
     (click)="onUpdateTodoBtnClick()"
   >
     Save ToDo

@@ -16,7 +16,7 @@
             ><img src="../../../../assets/img/check.svg" alt="Check"
           /></span>
         </label>
-        <div class="todo-list-item-title">
+        <div class="todo-list-item-title" [class.completed]="todo.completed">
           {{ todo.title }}
         </div>
         <div class="todo-list-item-actions">

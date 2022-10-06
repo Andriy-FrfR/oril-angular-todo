@@ -11,6 +11,7 @@ export class UpdateTodoModalComponent implements OnInit {
   @Input('todo') todo!: Todo;
   @Output() todoUpdatedEvent = new EventEmitter<Todo>();
   title = '';
+  showError = false;
 
   constructor(private todoServ: TodoService) {}
 
@@ -20,6 +21,7 @@ export class UpdateTodoModalComponent implements OnInit {
 
   onUpdateTodoBtnClick(): void {
     if (!this.title) {
+      this.showError = true;
       return;
     }
 

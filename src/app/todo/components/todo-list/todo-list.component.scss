@@ -45,6 +45,11 @@ header {
       line-height: 28px;
       color: #30313a;
       word-break: break-all;
+
+      &.completed {
+        color: #686974;
+        text-decoration-line: line-through;
+      }
     }
 
     &-actions {
