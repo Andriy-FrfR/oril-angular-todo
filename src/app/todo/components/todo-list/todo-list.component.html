@@ -9,16 +9,15 @@
       </button>
     </header>
     <ul class="todo-list">
-      <li class="todo-list-item">
-        <label class="custom-checkbox">
-          <input type="checkbox" />
+      <li class="todo-list-item" *ngFor="let todo of todos">
+        <label class="custom-checkbox" (click)="onCheckboxClick($event, todo)">
+          <input type="checkbox" [checked]="todo.completed" />
           <span class="checkbox"
             ><img src="../../../../assets/img/check.svg" alt="Check"
           /></span>
         </label>
         <div class="todo-list-item-title">
-          Schedule a new apartment overview (Details: Sarah, 215 Newarc Drive,
-          New Jersey, 202-555-0183)
+          {{ todo.title }}
         </div>
         <div class="todo-list-item-actions">
           <img src="../../../../assets/img/edit-todo.svg" alt="Edit button" />
