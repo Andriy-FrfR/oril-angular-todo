@@ -1,0 +1,10 @@
+<div class="modal">
+  <img
+    class="close-btn"
+    src="../../../../assets/img/close-modal-btn.svg"
+    alt="Close button"
+    (click)="onCloseBtnClick()"
+  />
+  <div class="title">{{ title }}</div>
+  <ng-content></ng-content>
+</div>

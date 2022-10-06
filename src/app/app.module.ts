@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { LogErrorsInterceptor } from './shared/interceptors/log-errors.interceptor';
 import { TodoModule } from './todo/todo.module';
 import { AuthModule } from './auth/auth.module';
@@ -10,7 +11,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, AuthModule, TodoModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AuthModule,
+    TodoModule,
+    SharedModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

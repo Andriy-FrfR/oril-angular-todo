@@ -1,0 +1,29 @@
+.modal {
+  position: fixed;
+  z-index: 10;
+  top: 290px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 560px;
+  border: 1px solid #e1e1e1;
+  border-radius: 20px;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.06);
+  padding: 40px 80px;
+  background: #ffffff;
+
+  .title {
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 22px;
+    color: #30313a;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 19px;
+    right: 19px;
+    cursor: pointer;
+  }
+}
